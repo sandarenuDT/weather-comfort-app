@@ -1,0 +1,326 @@
+:root {
+  --bg: #F5F7F5;
+  --paper: #FFFFFF;
+  --ink: #16232B;
+  --ink-soft: #5B6B70;
+  --line: #D7DED9;
+  --comfort-high: #3A7D67;
+  --comfort-low: #B54834;
+
+  --font-display: Georgia, 'Iowan Old Style', 'Palatino Linotype', serif;
+  --font-body: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+}
+
+.masthead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 1rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.masthead h1 {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+.masthead .date {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.auth-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.user-tag {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+button {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+button:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--comfort-high);
+  outline-offset: 2px;
+}
+
+.state-message {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.state-message.error {
+  color: var(--comfort-low);
+}
+
+.list {
+  border-top: 1px solid var(--ink);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.rank {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--ink-soft);
+}
+
+.city-info {
+  min-width: 0;
+}
+
+.city-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  margin: 0 0 0.2rem;
+}
+
+.city-meta {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.comfort-block {
+  text-align: right;
+  min-width: 7rem;
+}
+
+.comfort-score {
+  font-variant-numeric: tabular-nums;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.comfort-bar-track {
+  width: 100%;
+  height: 6px;
+  background: var(--line);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.comfort-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+}
+
+@media (max-width: 480px) {
+  .row {
+    grid-template-columns: 2rem 1fr;
+  }
+  .comfort-block {
+    grid-column: 1 / -1;
+    text-align: left;
+    margin-top: 0.4rem;
+  }
+}
+/* ============================================================
+   Append everything below to your existing index.css.
+   Nothing above this line needs to change.
+   ============================================================ */
+
+/* ---- Dark mode ----
+   Toggled by setting data-theme="dark" on the <html> element.
+   Same structure as :root, just inverted paper/ink, kept in the
+   same moss/rust comfort-color family so the design stays coherent. */
+:root[data-theme='dark'] {
+  --bg: #14181A;
+  --paper: #1B2120;
+  --ink: #E9EDE8;
+  --ink-soft: #94A19A;
+  --line: #2C3432;
+  --comfort-high: #5FA98A;
+  --comfort-low: #D06B4D;
+}
+
+/* Smooth the swap so it doesn't feel like a hard flash */
+body,
+button,
+.paper-toggle,
+.toolbar input,
+.toolbar select {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* ---- Toolbar: search + sort + theme toggle ---- */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.75rem;
+  flex-wrap: wrap;
+}
+
+.toolbar-search {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+
+.toolbar-search input {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 0.5rem 0;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+}
+
+.toolbar-search input::placeholder {
+  color: var(--ink-soft);
+}
+
+.toolbar-search input:focus-visible {
+  outline: none;
+  border-bottom-color: var(--ink);
+}
+
+.toolbar-sort {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.toolbar-sort select {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.theme-toggle {
+  font-size: 0.85rem;
+  padding: 0.5rem 0.9rem;
+}
+
+.empty-results {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--ink-soft);
+  text-align: center;
+  padding: 3rem 0;
+}
+
+/* ---- Expandable row + forecast chart ---- */
+.row {
+  cursor: pointer;
+}
+
+.row-expand {
+  grid-column: 1 / -1;
+  padding-top: 1rem;
+  margin-top: 0.25rem;
+  border-top: 1px dashed var(--line);
+}
+
+.forecast-heading {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  margin: 0 0 0.6rem;
+}
+
+.forecast-state {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  padding: 0.5rem 0;
+}
+
+.forecast-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.forecast-chart .chart-line {
+  fill: none;
+  stroke: var(--comfort-high);
+  stroke-width: 1.75;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.forecast-chart .chart-axis {
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.forecast-chart .chart-point {
+  fill: var(--paper);
+  stroke: var(--comfort-high);
+  stroke-width: 1.5;
+}
+
+.forecast-chart .chart-label {
+  font-family: var(--font-body);
+  font-size: 9px;
+  fill: var(--ink-soft);
+}
