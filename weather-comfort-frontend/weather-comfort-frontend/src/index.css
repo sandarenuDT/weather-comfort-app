@@ -176,15 +176,7 @@ button:focus-visible {
     margin-top: 0.4rem;
   }
 }
-/* ============================================================
-   Append everything below to your existing index.css.
-   Nothing above this line needs to change.
-   ============================================================ */
 
-/* ---- Dark mode ----
-   Toggled by setting data-theme="dark" on the <html> element.
-   Same structure as :root, just inverted paper/ink, kept in the
-   same moss/rust comfort-color family so the design stays coherent. */
 :root[data-theme='dark'] {
   --bg: #14181A;
   --paper: #1B2120;

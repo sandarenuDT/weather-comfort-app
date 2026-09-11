@@ -1,48 +1,4 @@
-// import { useEffect, useState } from 'react'
-// import { useAuth0 } from '@auth0/auth0-react'
-// import { fetchComfortRanking } from '../services/weatherApi'
-// import CityRow from './CityRow'
 
-// export default function ComfortDashboard() {
-//   const { getAccessTokenSilently } = useAuth0()
-//   const [cities, setCities] = useState(null)
-//   const [error, setError] = useState(null)
-
-//   useEffect(() => {
-//     let cancelled = false
-
-//     async function load() {
-//       try {
-//         const token = await getAccessTokenSilently()
-//         const data = await fetchComfortRanking(token)
-//         if (!cancelled) setCities(data)
-//       } catch (err) {
-//         if (!cancelled) setError(err.message)
-//       }
-//     }
-
-//     load()
-//     return () => {
-//       cancelled = true
-//     }
-//   }, [getAccessTokenSilently])
-
-//   if (error) {
-//     return <p className="state-message error">Couldn't load the comfort ranking: {error}</p>
-//   }
-
-//   if (!cities) {
-//     return <p className="state-message">Loading today's comfort ranking…</p>
-//   }
-
-//   return (
-//     <div className="list">
-//       {cities.map((city) => (
-//         <CityRow key={city.cityCode} city={city} />
-//       ))}
-//     </div>
-//   )
-// }
 import { useEffect, useMemo, useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { fetchComfortRanking } from '../services/weatherApi'
